@@ -44,7 +44,7 @@ const coffeeCategories = [
   {
     key: "microlote",
     name: "Microlote",
-    image: "/microlote.png",
+    image: "/microlote-png.png",
     products: [
       { name: "250g (Moído ou Grãos)", price: "R$29,70" },
     ],
@@ -52,7 +52,7 @@ const coffeeCategories = [
   {
     key: "drip",
     name: "Drip Coffee",
-    image: "/drip.png",
+    image: "/drip-coffee.jpg",
     products: [
       { name: "Display 10 unidades Suave", price: "R$24,70" },
     ],
@@ -60,7 +60,7 @@ const coffeeCategories = [
   {
     key: "capsulas",
     name: "Cápsulas Nespresso",
-    image: "/capsulas.png",
+    image: "/capsula.png",
     products: [
       { name: "Clássico 10un", price: "R$17,70" },
       { name: "Canela 10un", price: "R$17,70" },
@@ -113,40 +113,6 @@ export default function Home() {
           Direto da Serra da Canastra. <span className="text-amber-600">Frescor na xícara, sabor que conquista.</span>
         </h1>
         <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Café especial, selecionado e torrado sob demanda para você.</p>
-      </motion.section>
-
-      {/* BENEFÍCIOS */}
-      <motion.section 
-        className="mb-24 px-6"
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <motion.h2 
-          className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          Por que Café Canastra?
-        </motion.h2>
-        <div className="flex flex-col gap-6 items-center max-w-2xl mx-auto">
-          {benefits.map((b, i) => (
-            <motion.div 
-              key={i} 
-              className="flex items-center gap-4 text-xl text-gray-800 bg-white rounded-2xl px-8 py-6 shadow-sm w-full"
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-              viewport={{ once: true }}
-            >
-              <span className="text-2xl">{b.icon}</span>
-              <span className="font-medium">{b.text}</span>
-            </motion.div>
-          ))}
-        </div>
       </motion.section>
 
       {/* TABELA DE PREÇOS */}
@@ -220,6 +186,40 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* BENEFÍCIOS */}
+      <motion.section 
+        className="mb-24 px-6"
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <motion.h2 
+          className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          Por que Café Canastra?
+        </motion.h2>
+        <div className="flex flex-col gap-6 items-center max-w-2xl mx-auto">
+          {benefits.map((b, i) => (
+            <motion.div 
+              key={i} 
+              className="flex items-center gap-4 text-xl text-gray-800 bg-white rounded-2xl px-8 py-6 shadow-sm w-full"
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+              viewport={{ once: true }}
+            >
+              <span className="text-2xl">{b.icon}</span>
+              <span className="font-medium">{b.text}</span>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
       {/* CHAMADA FINAL */}
       <motion.section 
         className="mb-24 px-6"
@@ -233,14 +233,17 @@ export default function Home() {
           whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
         >
           <h3 className="text-3xl sm:text-4xl font-bold mb-6">Café Canastra – Da fazenda para a sua xícara. Experimente o sabor da Serra!</h3>
-          <motion.button 
+          <motion.a 
+            href="https://wa.me/553493195252"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white text-amber-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-50 transition-colors duration-300 flex items-center gap-3 mx-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Fazer Pedido
             <FaArrowRight />
-          </motion.button>
+          </motion.a>
         </motion.div>
       </motion.section>
 
