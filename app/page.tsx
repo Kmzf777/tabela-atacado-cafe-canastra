@@ -6,7 +6,7 @@ import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
 const pacotes = [
   {
     nome: "Canastra Clássico",
-    descricao: "Café 100% Arábica - Tipo Especial +80 SCAA. Torra escura intensidade 8 e moagem médio-fina, ideal para coador. Encorpado com notas caramelizadas e achocolatadas.",
+    descricao: "Café 100% Arábica - Tipo Especial +80 SCA. Torra escura intensidade 8 e moagem médio-fina, ideal para coador. Encorpado com notas caramelizadas e achocolatadas.",
     imagem: "/cafe-classico.png",
     notas: { docura: 3, acidez: 3, corpo: 5, amargor: 4 },
     opcoes: [
@@ -19,7 +19,7 @@ const pacotes = [
   },
   {
     nome: "Canastra Suave",
-    descricao: "Café 100% Arábica - Tipo Especial +80 SCAA. Torra média intensidade 7 e moagem médio-fina, ideal para coador. Encorpado com notas achocolatadas e finalização cítrica.",
+    descricao: "Café 100% Arábica - Tipo Especial +80 SCA. Torra média intensidade 7 e moagem médio-fina, ideal para coador. Encorpado com notas achocolatadas e finalização cítrica.",
     imagem: "/cafe-suave.png",
     notas: { docura: 3, acidez: 2, corpo: 4, amargor: 3 },
     opcoes: [
@@ -32,7 +32,7 @@ const pacotes = [
   },
   {
     nome: "Canastra Canela",
-    descricao: "Café 100% Arábica - Tipo Especial +80 SCAA. Torra escura intensidade 7. Encorpado com notas caramelizadas e adicionado com canela natural.",
+    descricao: "Café 100% Arábica - Tipo Especial +80 SCA. Torra escura intensidade 7. Encorpado com notas caramelizadas e adicionado com canela natural.",
     imagem: "/cafe-canela.png",
     notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
     opcoes: [
@@ -42,7 +42,7 @@ const pacotes = [
   // Agora os especiais
   {
     nome: "Microlote",
-    descricao: "Café 100% Arábica Especial. Médio corpo, notas de cacau, melaço e finalização suavemente cítrica.",
+    descricao: "Café 100% Arábica Especial com 86 pontos SCA. Médio corpo, notas de cacau, melaço e finalização suavemente cítrica.",
     imagem: "/microlote-png.png",
     notas: { docura: 3, acidez: 4, corpo: 4, amargor: 3 },
     opcoes: [
@@ -51,8 +51,8 @@ const pacotes = [
     ],
   },
   {
-    nome: "Néctar de minas",
-    descricao: "Café 100% Arábica - Tipo Exportação 76 pontos. Torra escura intensidade 8 e moagem médio-fina, ideal para coador. Encorpado com notas caramelizadas e achocolatadas.",
+    nome: "Néctar de Minas",
+    descricao: "Café 100% Arábica Gourmet - 75 pontos SCA. Torra escura intensidade 8 e moagem médio-fina, ideal para coador. Encorpado com notas caramelizadas e achocolatadas.",
     imagem: "/nectar-de-minas.png",
     notas: { docura: 2, acidez: 3, corpo: 5, amargor: 5 },
     opcoes: [
@@ -70,7 +70,7 @@ const produtos = [
     produtos: [
       {
         nome: "Drip Coffee Canastra Suave",
-        descricao: "Café 100% Arábica - Tipo Especial +80 SCAA em sachês individuais. Torra média intensidade 7 e moagem médio-fina. Encorpado com notas achocolatadas e finalização cítrica.",
+        descricao: "Café 100% Arábica - Tipo Especial +80 SCA em sachês individuais. Torra média intensidade 7 e moagem médio-fina. Encorpado com notas achocolatadas e finalização cítrica.",
         imagem: "/drip-coffee.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
         opcoes: [
@@ -79,8 +79,8 @@ const produtos = [
       },
       {
         nome: "Cápsula Canastra Clássico",
-        descricao: "Café 100% Arábica - Tipo Especial +80 SCAA em cápsulas e compatível com sistema Nespresso. Torra escura intensidade 8 e moagem médio-fina. Encorpado com notas caramelizadas e achocolatadas.",
-        imagem: "/capsula.png",
+        descricao: "Café 100% Arábica - Tipo Especial +80 SCA em cápsulas e compatível com sistema Nespresso. Torra escura intensidade 8 e moagem médio-fina. Encorpado com notas caramelizadas e achocolatadas.",
+        imagem: "/capsula-classico-canastra.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 4 },
         opcoes: [
           { tipo: "Display (10 unid. de cápsulas)", preco: "R$17,70" },
@@ -88,8 +88,8 @@ const produtos = [
       },
       {
         nome: "Cápsula Canastra Canela",
-        descricao: "Café 100% Arábica - Tipo Especial +80 SCAA em cápsulas e compatível com sistema Nespresso. Torra escura intensidade 7. Encorpado com notas caramelizadas e adicionado com canela natural.",
-        imagem: "/capsula-canastra-canela.png",
+        descricao: "Café 100% Arábica - Tipo Especial +80 SCA em cápsulas e compatível com sistema Nespresso. Torra escura intensidade 7. Encorpado com notas caramelizadas e adicionado com canela natural.",
+        imagem: "/capsula-canela-canastra.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
         opcoes: [
           { tipo: "Display (10 unid. de cápsulas)", preco: "R$17,70" },
@@ -240,7 +240,11 @@ export default function Home() {
         <div className="flex flex-col gap-2 md:gap-3 w-full">
           <div className="flex items-center gap-2 md:gap-3 bg-white rounded-xl px-2.5 py-2 md:px-4 md:py-3 shadow-sm font-sans w-full">
             <FaCheckCircle className="text-green-500 text-lg md:text-xl" />
-            <span className="text-sm md:text-base break-words">Café 100% arábica, da Serra da Canastra</span>
+            <span className="text-sm md:text-base break-words">Café 100% arábica especial, da Serra da Canastra</span>
+          </div>
+          <div className="flex items-center gap-2 md:gap-3 bg-white rounded-xl px-2.5 py-2 md:px-4 md:py-3 shadow-sm font-sans w-full">
+            <FaCheckCircle className="text-green-500 text-lg md:text-xl" />
+            <span className="text-sm md:text-base break-words">Logística rápida e eficiente</span>
           </div>
           <div className="flex items-center gap-2 md:gap-3 bg-white rounded-xl px-2.5 py-2 md:px-4 md:py-3 shadow-sm font-sans w-full">
             <FaCheckCircle className="text-green-500 text-lg md:text-xl" />
@@ -252,13 +256,13 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* Depoimentos */}
+      {/* Depoimentos - Comentado para uso futuro */}
+      {/*
       <section className="mb-8 md:mb-10 font-sans w-full">
         <h2 className="text-2xl md:text-4xl font-extrabold text-center mb-6 md:mb-10 break-words w-full">
           Histórias de <span className="text-amber-500">sucesso real</span>
         </h2>
         <div className="flex flex-col gap-4 md:flex-row md:gap-6 justify-center items-stretch w-full">
-          {/* Depoimento 1 */}
           <div className="bg-orange-50 rounded-2xl shadow-md p-4 md:p-6 flex-1 min-w-0 w-full mx-auto flex flex-col justify-between">
             <div className="flex items-center mb-2">
               {[...Array(5)].map((_, i) => (
@@ -268,7 +272,6 @@ export default function Home() {
             <p className="text-gray-800 mb-3 md:mb-4 text-sm md:text-base break-words">"Nossos clientes notaram a diferença imediatamente. O aroma é incrível e as vendas aumentaram bastante."</p>
             <span className="font-bold text-gray-900 text-sm md:text-base break-words">Brainer – Goiânia/GO</span>
           </div>
-          {/* Depoimento 2 */}
           <div className="bg-orange-50 rounded-2xl shadow-md p-4 md:p-6 flex-1 min-w-0 w-full mx-auto flex flex-col justify-between">
             <div className="flex items-center mb-2">
               {[...Array(5)].map((_, i) => (
@@ -278,7 +281,6 @@ export default function Home() {
             <p className="text-gray-800 mb-3 md:mb-4 text-sm md:text-base break-words">"O café gira rápido e os clientes sempre elogiam. Fomos aumentando a linha de produtos e agora dispomos dela completa, foi um sucesso."</p>
             <span className="font-bold text-gray-900 text-sm md:text-base break-words">Petterson Amorin – Frederico Westphalen/RS</span>
           </div>
-          {/* Depoimento 3 */}
           <div className="bg-orange-50 rounded-2xl shadow-md p-4 md:p-6 flex-1 min-w-0 w-full mx-auto flex flex-col justify-between">
             <div className="flex items-center mb-2">
               {[...Array(5)].map((_, i) => (
@@ -290,6 +292,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
       {/* Call to Action */}
       <section className="mb-8 md:mb-10 font-sans w-full">
         <div className="rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 p-4 md:p-6 flex flex-col items-center shadow-lg font-sans w-full">
