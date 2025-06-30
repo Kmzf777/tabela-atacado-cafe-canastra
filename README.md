@@ -1,6 +1,32 @@
-# Café Canastra - Tabela de Preços
+# Café Canastra - Tabela Atacado 2025
 
-Sistema de tabela de preços e gerenciamento interno para o Café Canastra.
+Tabela de preços e produtos do Café Canastra para atacado.
+
+- Mobile-first, responsivo
+- Visual moderno, UX/UI atual
+- Cards de produto com imagem à esquerda, informações à direita
+- Espaço reservado para imagens ausentes
+- Feito com Next.js (App Router) + Tailwind CSS
+- Pronto para deploy na Vercel
+
+## Como rodar localmente
+
+```bash
+npm install
+npm run dev
+```
+
+Acesse: http://localhost:3000
+
+## Deploy
+
+1. Faça push para o GitHub
+2. Conecte o repositório na Vercel
+3. Deploy automático
+
+---
+
+Projeto refeito do zero seguindo estrutura e visual do PDF fornecido.
 
 ## 🚀 Funcionalidades
 
@@ -10,63 +36,22 @@ Sistema de tabela de preços e gerenciamento interno para o Café Canastra.
 - Animações suaves com Framer Motion
 - Informações da empresa e contatos
 
-### Gerenciador de Preços (`/tabelamanager`)
-- **Acesso Protegido**: Requer autenticação
-- **Edição Inline**: Preços editáveis diretamente na tabela
-- **Persistência Local**: Alterações salvas no localStorage
-- **Validação**: Formato de preço validado (R$XX,XX)
-- **Feedback Visual**: Mensagens de sucesso e erro
-
-## 🔐 Sistema de Autenticação
-
-### Credenciais de Acesso
-- **Usuário**: `Canastrainteligencia`
-- **Senha**: `Canastrainteligencia@321`
-
-### Características
-- Autenticação via localStorage (sem backend)
-- Sessão persistente entre recarregamentos
-- Formulário seguro com validação
-- Feedback visual durante login
-
 ## 🛠️ Tecnologias Utilizadas
 
-- **Next.js 14** - Framework React
+- **Next.js** - Framework React
 - **TypeScript** - Tipagem estática
 - **Tailwind CSS** - Estilização
 - **Framer Motion** - Animações
 - **React Icons** - Ícones
-- **localStorage** - Persistência de dados
 
 ## 📁 Estrutura do Projeto
 
 ```
 app/
-├── components/
-│   ├── AuthProvider.tsx         # Contexto de autenticação
-│   ├── LoginForm.tsx            # Formulário de login
-│   ├── EditablePriceTable.tsx   # Tabela editável
-│   └── ProtectedRoute.tsx       # Proteção de rotas
-├── tabelamanager/
-│   └── page.tsx                 # Página protegida
 ├── layout.tsx                   # Layout principal
 ├── globals.css                  # Estilos globais
 └── page.tsx                     # Página inicial
 ```
-
-## 🎯 Como Usar
-
-### Acessando o Gerenciador
-1. Acesse a página principal: `http://localhost:3000`
-2. Clique em "Área Administrativa" no footer
-3. Ou acesse diretamente: `http://localhost:3000/tabelamanager`
-4. Faça login com as credenciais fornecidas
-
-### Editando Preços
-1. Clique no ícone de edição (lápis) ao lado do preço
-2. Digite o novo valor no formato R$XX,XX
-3. Pressione Enter para salvar ou Escape para cancelar
-4. As alterações são salvas automaticamente
 
 ## 🔧 Instalação e Execução
 
@@ -105,30 +90,6 @@ O sistema é totalmente responsivo e funciona em:
 - Sombras suaves (shadow-lg)
 - Transições suaves (transition-all)
 - Botões com hover effects
-
-## 🔒 Segurança
-
-### Autenticação
-- Autenticação simples via localStorage
-- Validação de formato de preços
-- Proteção contra entrada inválida
-- Feedback de erro para usuário
-
-## 📝 Notas Importantes
-
-- As alterações são salvas apenas no navegador local
-- Para reverter alterações, recarregue a página
-- O sistema não possui backend, sendo ideal para uso interno
-- As credenciais estão hardcoded no código (não usar em produção)
-
-## 🚀 Próximas Melhorias
-
-- [ ] Integração com backend real
-- [ ] Sistema de backup automático
-- [ ] Histórico de alterações
-- [ ] Múltiplos usuários
-- [ ] Exportação de dados
-- [ ] Notificações em tempo real
 
 ---
 
