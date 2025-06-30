@@ -1,8 +1,7 @@
 'use client'
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaCheckCircle } from 'react-icons/fa';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
 
 const pacotes = [
   {
@@ -11,11 +10,11 @@ const pacotes = [
     imagem: "/cafe-classico.png",
     notas: { docura: 3, acidez: 3, corpo: 5, amargor: 4 },
     opcoes: [
-      { tipo: "Moídos", peso: "250g", preco: "R$25,70" },
-      { tipo: "Moídos", peso: "500g", preco: "R$43,70" },
+      { tipo: "Moído", peso: "250g", preco: "R$25,70" },
+      { tipo: "Moído", peso: "500g", preco: "R$43,70" },
       { tipo: "Em Grãos", peso: "250g", preco: "R$26,70" },
       { tipo: "Em Grãos", peso: "500g", preco: "R$43,70" },
-      { tipo: "Em Grãos", peso: "1Kg", preco: "R$88,70" },
+      { tipo: "Em Grãos", peso: "1kg", preco: "R$88,70" },
     ],
   },
   {
@@ -24,11 +23,11 @@ const pacotes = [
     imagem: "/cafe-suave.png",
     notas: { docura: 3, acidez: 2, corpo: 4, amargor: 3 },
     opcoes: [
-      { tipo: "Moídos", peso: "250g", preco: "R$25,70" },
-      { tipo: "Moídos", peso: "500g", preco: "R$43,70" },
+      { tipo: "Moído", peso: "250g", preco: "R$25,70" },
+      { tipo: "Moído", peso: "500g", preco: "R$43,70" },
       { tipo: "Em Grãos", peso: "250g", preco: "R$26,70" },
       { tipo: "Em Grãos", peso: "500g", preco: "R$43,70" },
-      { tipo: "Em Grãos", peso: "1Kg", preco: "R$88,70" },
+      { tipo: "Em Grãos", peso: "1kg", preco: "R$88,70" },
     ],
   },
   {
@@ -43,7 +42,6 @@ const pacotes = [
   // Agora os especiais
   {
     nome: "Microlote",
-    destaque: "Tiragem Limitada",
     descricao: "Café 100% Arábica Especial. Médio corpo, notas de cacau, melaço e finalização suavemente cítrica.",
     imagem: "/microlote-png.png",
     notas: { docura: 3, acidez: 4, corpo: 4, amargor: 3 },
@@ -59,7 +57,7 @@ const pacotes = [
     notas: { docura: 2, acidez: 3, corpo: 5, amargor: 5 },
     opcoes: [
       { tipo: "Moído", peso: "500g", preco: "R$39,70" },
-      { tipo: "Em Grãos", peso: "1Kg", preco: "R$82,70" },
+      { tipo: "Em Grãos", peso: "1kg", preco: "R$82,70" },
     ],
   },
 ];
@@ -76,7 +74,7 @@ const produtos = [
         imagem: "/drip-coffee.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
         opcoes: [
-          { tipo: "Display (10uni de sachê)", preco: "R$24,90" },
+          { tipo: "Display (10 unid. de sachês)", preco: "R$24,90" },
         ],
       },
       {
@@ -85,7 +83,7 @@ const produtos = [
         imagem: "/capsula.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 4 },
         opcoes: [
-          { tipo: "Display (10uni de cápsula)", preco: "R$17,70" },
+          { tipo: "Display (10 unid. de cápsulas)", preco: "R$17,70" },
         ],
       },
       {
@@ -94,7 +92,7 @@ const produtos = [
         imagem: "/capsula-canastra-canela.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
         opcoes: [
-          { tipo: "Display (10uni de cápsula)", preco: "R$17,70" },
+          { tipo: "Display (10 unid. de cápsulas)", preco: "R$17,70" },
         ],
       },
     ],
@@ -108,7 +106,7 @@ const produtos = [
         descricao: "Granel Canastra: Clássico ou Suave (100% Arábica Especial, Pontuação 84).",
         imagem: "/Granel Canastra.png",
         opcoes: [
-          { tipo: "Canastra Clássico ou Suave", peso: "2Kg em grãos", preco: "R$144,70" },
+          { tipo: "Canastra Clássico ou Suave", peso: "2kg em grãos", preco: "R$144,70" },
         ],
       },
     ],
@@ -160,53 +158,62 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
         {secao}
       </motion.h2>
       <div className="flex flex-col gap-10">
-        {produtos.map((prod: any, idx: number) => (
-          <motion.div
-            key={prod.nome}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: idx * 0.08, ease: 'easeOut' }}
-            className={`flex flex-col sm:flex-row items-start gap-4 sm:gap-6 rounded-3xl shadow-2xl p-6 md:p-8 border border-gray-100 hover:scale-[1.025] hover:shadow-amber-200 transition-all min-h-[120px] group ${gradienteCardProduto(prod.nome)}`}
-          >
-            {/* Imagem 1:1 */}
-            <div className="w-32 h-32 md:w-36 md:h-36 rounded-2xl flex items-center justify-center overflow-hidden mx-auto sm:mx-0 mb-4 sm:mb-0">
-              {prod.imagem ? (
-                <Image src={prod.imagem} alt={prod.nome} width={144} height={144} className="object-cover w-full h-full rounded-2xl" />
-              ) : (
-                <span className="text-xs text-gray-400">Imagem<br/>1:1</span>
-              )}
-            </div>
-            {/* Info */}
-            <div className="flex-1 min-w-0 text-center sm:text-left">
-              <div className="flex items-center gap-2 mb-2">
-                <span className={`font-bold text-2xl md:text-3xl ${corTituloProduto(prod.nome)}`}>{prod.nome}</span>
-                {prod.destaque && <span className="bg-green-600 text-white text-xs px-3 py-1 rounded ml-1 font-semibold shadow">{prod.destaque}</span>}
+        {produtos.map((prod: any, idx: number) => {
+          const isMicrolote = prod.nome.toLowerCase().includes('microlote');
+          return (
+            <motion.div
+              key={prod.nome}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: 'easeOut' }}
+              className={`flex flex-col sm:flex-row items-start gap-4 sm:gap-6 rounded-3xl shadow-2xl p-3 md:p-8 border transition-all min-h-[120px] group w-full max-w-full
+                ${isMicrolote ? 'bg-gradient-to-br from-[#fffbe6] via-[#fff7cc] to-[#ffe066] border-yellow-400 shadow-[0_0_24px_2px_rgba(255,215,0,0.12)] ring-2 ring-yellow-300/40' : 'border-gray-100'}
+                ${gradienteCardProduto(prod.nome)}
+              `}
+              style={isMicrolote ? {boxShadow: '0 0 32px 0 rgba(255, 215, 0, 0.18), 0 2px 8px 0 rgba(0,0,0,0.04)'} : {}}
+            >
+              {/* Imagem 1:1 */}
+              <div className="w-28 h-28 md:w-36 md:h-36 rounded-2xl flex items-center justify-center overflow-hidden mx-auto sm:mx-0 mb-4 sm:mb-0 flex-shrink-0">
+                {prod.imagem ? (
+                  <Image src={prod.imagem} alt={prod.nome} width={144} height={144} className="object-cover w-full h-full rounded-2xl" />
+                ) : (
+                  <span className="text-xs text-gray-400">Imagem<br/>1:1</span>
+                )}
               </div>
-              <p className="text-base md:text-lg text-gray-700 mb-3 leading-tight">{prod.descricao}</p>
-              {/* Notas */}
-              {prod.notas && (
-                <div className="flex gap-4 text-sm mb-3">
-                  <span>Doçura <NotaEstrela n={prod.notas.docura} /></span>
-                  <span>Acidez <NotaEstrela n={prod.notas.acidez} /></span>
-                  <span>Corpo <NotaEstrela n={prod.notas.corpo} /></span>
-                  <span>Amargor <NotaEstrela n={prod.notas.amargor} /></span>
+              {/* Info */}
+              <div className="flex-1 min-w-0 text-center sm:text-left w-full max-w-full">
+                <div className="flex items-center gap-2 mb-2 w-full max-w-full relative">
+                  <span className={`font-bold text-2xl md:text-3xl ${corTituloProduto(prod.nome)} break-words w-full max-w-full`}>{prod.nome}</span>
                 </div>
-              )}
-              {/* Preços */}
-              <div className="flex flex-col gap-2 mt-2">
-                {prod.opcoes.map((op: any, i: number) => (
-                  <div key={i} className="flex items-center justify-between bg-white rounded-xl px-4 py-2 shadow-sm border border-gray-100">
-                    <span className="text-gray-700">
-                      {op.tipo ? `${op.tipo} ${op.peso}` : op.peso}
+                <p className="text-base md:text-lg text-gray-700 mb-3 leading-tight break-words w-full max-w-full">{prod.descricao}</p>
+                {/* Notas */}
+                {prod.notas && (
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm mb-3 w-full max-w-full justify-center sm:justify-start">
+                    <span>Doçura <NotaEstrela n={prod.notas.docura} /></span>
+                    <span>Acidez <NotaEstrela n={prod.notas.acidez} /></span>
+                    <span>Corpo <NotaEstrela n={prod.notas.corpo} /></span>
+                    <span className="w-full flex flex-col items-center sm:flex-row sm:items-center justify-center sm:justify-start">
+                      <span>Amargor</span>
+                      <span className="sm:ml-1"><NotaEstrela n={prod.notas.amargor} /></span>
                     </span>
-                    <span className="text-amber-600 font-bold" style={{letterSpacing: 1}}>{op.preco}</span>
                   </div>
-                ))}
+                )}
+                {/* Preços */}
+                <div className="flex flex-col gap-2 mt-2 w-full max-w-full">
+                  {prod.opcoes.map((op: any, i: number) => (
+                    <div key={i} className="flex items-center justify-between bg-white rounded-xl px-2 md:px-4 py-2 shadow-sm border border-gray-100 w-full max-w-full">
+                      <span className="text-gray-700 break-words w-full max-w-full text-sm md:text-base text-left">
+                        {`${op.tipo ? op.tipo : ''}${op.tipo && op.peso ? ' ' : ''}${op.peso ? op.peso : ''}`.trim()}
+                      </span>
+                      <span className="text-amber-600 font-bold text-base md:text-lg text-right" style={{letterSpacing: 1}}>{op.preco}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
