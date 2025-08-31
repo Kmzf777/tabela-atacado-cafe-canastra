@@ -10,11 +10,11 @@ const pacotes = [
     imagem: "/cafe-classico.png",
     notas: { docura: 3, acidez: 3, corpo: 5, amargor: 4 },
     opcoes: [
-      { tipo: "Molido", peso: "250g", preco: "USD$6.85" },
-      { tipo: "Molido", peso: "500g", preco: "USD$10.25" },
-      { tipo: "En Granos", peso: "250g", preco: "USD$7.04" },
-      { tipo: "En Granos", peso: "500g", preco: "USD$10.25" },
-      { tipo: "En Granos", peso: "1kg", preco: "USD$18.74" },
+      { tipo: "Molido", peso: "250g", preco: "USD$9.85" },
+      { tipo: "Molido", peso: "500g", preco: "USD$13.25" },
+      { tipo: "En Granos", peso: "250g", preco: "USD$10.04" },
+      { tipo: "En Granos", peso: "500g", preco: "USD$13.25" },
+      { tipo: "En Granos", peso: "1kg", preco: "USD$21.74" },
     ],
   },
   {
@@ -23,11 +23,11 @@ const pacotes = [
     imagem: "/cafe-suave.png",
     notas: { docura: 3, acidez: 2, corpo: 4, amargor: 3 },
     opcoes: [
-      { tipo: "Molido", peso: "250g", preco: "USD$6.85" },
-      { tipo: "Molido", peso: "500g", preco: "USD$10.25" },
-      { tipo: "En Granos", peso: "250g", preco: "USD$7.04" },
-      { tipo: "En Granos", peso: "500g", preco: "USD$10.25" },
-      { tipo: "En Granos", peso: "1kg", preco: "USD$18.74" },
+      { tipo: "Molido", peso: "250g", preco: "USD$9.85" },
+      { tipo: "Molido", peso: "500g", preco: "USD$13.25" },
+      { tipo: "En Granos", peso: "250g", preco: "USD$10.04" },
+      { tipo: "En Granos", peso: "500g", preco: "USD$13.25" },
+      { tipo: "En Granos", peso: "1kg", preco: "USD$21.74" },
     ],
   },
   {
@@ -36,7 +36,7 @@ const pacotes = [
     imagem: "/cafe-canela.png",
     notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
     opcoes: [
-      { tipo: "Molido", peso: "250g", preco: "USD$6.85" },
+      { tipo: "Molido", peso: "250g", preco: "USD$9.85" },
     ],
   },
   // Ahora los especiales
@@ -46,8 +46,8 @@ const pacotes = [
     imagem: "/microlote-png.png",
     notas: { docura: 3, acidez: 4, corpo: 4, amargor: 3 },
     opcoes: [
-      { tipo: "Molido", peso: "250g", preco: "USD$7.60" },
-      { tipo: "En Granos", peso: "250g", preco: "USD$7.60" },
+      { tipo: "Molido", peso: "250g", preco: "USD$10.61" },
+      { tipo: "En Granos", peso: "250g", preco: "USD$10.61" },
     ],
   },
   {
@@ -56,8 +56,8 @@ const pacotes = [
     imagem: "/nectar-de-minas.png",
     notas: { docura: 2, acidez: 3, corpo: 5, amargor: 5 },
     opcoes: [
-      { tipo: "Molido", peso: "500g", preco: "USD$9.49" },
-      { tipo: "En Granos", peso: "1kg", preco: "USD$17.60" },
+      { tipo: "Molido", peso: "500g", preco: "USD$12.49" },
+      { tipo: "En Granos", peso: "1kg", preco: "USD$20.60" },
     ],
   },
 ];
@@ -74,7 +74,7 @@ const produtos = [
         imagem: "/drip-coffee.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
         opcoes: [
-          { tipo: "Display (10 unid. de sobres)", preco: "USD$6.70" },
+          { tipo: "Display (10 unid. de sobres)", preco: "USD$9.70" },
         ],
       },
       {
@@ -83,7 +83,7 @@ const produtos = [
         imagem: "/capsula-classico-canastra.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 4 },
         opcoes: [
-          { tipo: "Display (10 unid. de cápsulas)", preco: "USD$5.34" },
+          { tipo: "Display (10 unid. de cápsulas)", preco: "USD$8.34" },
         ],
       },
       {
@@ -92,7 +92,7 @@ const produtos = [
         imagem: "/capsula-canela-canastra.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
         opcoes: [
-          { tipo: "Display (10 unid. de cápsulas)", preco: "USD$5.34" },
+          { tipo: "Display (10 unid. de cápsulas)", preco: "USD$8.34" },
         ],
       },
     ],
@@ -106,7 +106,7 @@ const produtos = [
         descricao: "Granel Canastra: Clásico o Suave (100% Arábica Especial, Puntuación 84).",
         imagem: "/Granel Canastra.png",
         opcoes: [
-          { tipo: "Canastra Clásico o Suave", peso: "2kg en granos", preco: "USD$29.31" },
+          { tipo: "Canastra Clásico o Suave", peso: "2kg en granos", preco: "USD$32.31" },
         ],
       },
     ],
@@ -219,7 +219,7 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
   );
 }
 
-export default function Chile() {
+export default function Panama() {
   return (
     <main className="w-full max-w-xl mx-auto px-1.5 sm:px-2 py-6 md:py-12 font-sans overflow-x-hidden">
       {/* Hero Section */}
@@ -231,12 +231,12 @@ export default function Chile() {
         <p className="text-center text-sm md:text-lg text-gray-600 mb-2 font-sans break-words w-full">Café especial, seleccionado y tostado bajo demanda para usted.</p>
       </section>
 
-      {/* Sección de Precios CIF Santiago */}
+      {/* Sección de Precios CIF Panamá */}
       <section className="mb-8 font-sans w-full">
         <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-4 md:p-6 border border-blue-200 shadow-lg">
-          <h2 className="text-lg md:text-xl font-bold text-blue-900 mb-3 text-center font-sans break-words w-full">Precio CIF Santiago - Chile</h2>
+          <h2 className="text-lg md:text-xl font-bold text-blue-900 mb-3 text-center font-sans break-words w-full">Precio CIF Panamá</h2>
           <p className="text-sm md:text-base text-blue-800 text-center leading-relaxed font-sans break-words w-full">
-            Incluye toda la logística, documentos y tasas en Brasil, el cliente deberá únicamente hacer el desaduanaje en Chile. No hay impuesto de importación ya que los países son signatarios de la ALADI.
+            Incluye toda la logística, documentos y tasas en Brasil, el cliente deberá únicamente hacer el desaduanaje en Panamá. No hay impuesto de importación ya que los países son signatarios de la ALADI.
           </p>
         </div>
       </section>
