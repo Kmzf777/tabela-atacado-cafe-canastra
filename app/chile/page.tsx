@@ -264,7 +264,6 @@ export default function Chile() {
       {/* Secciones únicas */}
       <SecaoProdutos secao="Paquetes" produtos={produtos[0].produtos} />
       <SecaoProdutos secao="Displays" produtos={produtos[1].produtos} />
-      <SecaoProdutos secao="Graneles" produtos={produtos[2].produtos} />
       
       {/* Información de Pedido Mínimo */}
       <section className="mb-8 font-sans w-full">
