@@ -127,20 +127,7 @@ const produtos = [
       },
     ],
   },
-  // GRANEIS
-  {
-    secao: "Graneles",
-    produtos: [
-      {
-        nome: "Graneles Canastra",
-        descricao: "Granel Canastra: Clásico o Suave (100% Arábica Especial, Puntuación 84).",
-        imagem: "/Granel Canastra.png",
-        opcoes: [
-          { tipo: "Canastra Clásico o Suave", peso: "2kg en granos", preco: "USD$29.31" },
-        ],
-      },
-    ],
-  },
+
 ];
 
 function NotaEstrela({ n }: { n: number }) {
