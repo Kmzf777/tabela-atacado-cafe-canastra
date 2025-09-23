@@ -10,11 +10,11 @@ const pacotes = [
     imagem: "/cafe-classico.png",
     notas: { docura: 3, acidez: 3, corpo: 5, amargor: 4 },
     opcoes: [
-      { tipo: "Molido", peso: "250g", preco: "USD$6.85" },
-      { tipo: "Molido", peso: "500g", preco: "USD$10.25" },
-      { tipo: "En Granos", peso: "250g", preco: "USD$7.04" },
-      { tipo: "En Granos", peso: "500g", preco: "USD$10.25" },
-      { tipo: "En Granos", peso: "1kg", preco: "USD$18.74" },
+      { tipo: "Molido", peso: "250g", preco: "USD$4.17" },
+      { tipo: "Molido", peso: "500g", preco: "USD$8.34" },
+      { tipo: "En Granos", peso: "250g", preco: "USD$4.17" },
+      { tipo: "En Granos", peso: "500g", preco: "USD$8.34" },
+      { tipo: "En Granos", peso: "1kg", preco: "USD$15.87" },
     ],
   },
   {
@@ -23,11 +23,11 @@ const pacotes = [
     imagem: "/cafe-suave.png",
     notas: { docura: 3, acidez: 2, corpo: 4, amargor: 3 },
     opcoes: [
-      { tipo: "Molido", peso: "250g", preco: "USD$6.85" },
-      { tipo: "Molido", peso: "500g", preco: "USD$10.25" },
-      { tipo: "En Granos", peso: "250g", preco: "USD$7.04" },
-      { tipo: "En Granos", peso: "500g", preco: "USD$10.25" },
-      { tipo: "En Granos", peso: "1kg", preco: "USD$18.74" },
+      { tipo: "Molido", peso: "250g", preco: "USD$4.17" },
+      { tipo: "Molido", peso: "500g", preco: "USD$8.34" },
+      { tipo: "En Granos", peso: "250g", preco: "USD$4.17" },
+      { tipo: "En Granos", peso: "500g", preco: "USD$8.34" },
+      { tipo: "En Granos", peso: "1kg", preco: "USD$15.87" },
     ],
   },
   {
@@ -36,7 +36,7 @@ const pacotes = [
     imagem: "/cafe-canela.png",
     notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
     opcoes: [
-      { tipo: "Molido", peso: "250g", preco: "USD$6.85" },
+      { tipo: "Molido", peso: "250g", preco: "USD$4.17" },
     ],
   },
   // Ahora los especiales
@@ -46,18 +46,48 @@ const pacotes = [
     imagem: "/microlote-png.png",
     notas: { docura: 3, acidez: 4, corpo: 4, amargor: 3 },
     opcoes: [
-      { tipo: "Molido", peso: "250g", preco: "USD$7.60" },
+      { tipo: "Molido", peso: "250g", preco: "USD$4.57" },
       { tipo: "En Granos", peso: "250g", preco: "USD$7.60" },
     ],
   },
   {
-    nome: "Néctar de Minas",
+    nome: "Café Soluble Marca Blanca",
+    descricao: "Café solúvel spray dried blend arabica e robusta.",
+    imagem: "/cafe-soluvel.jpg",
+    opcoes: [
+      { tipo: "Standup Pouch", peso: "170g", preco: "USD$5.82" },
+      { tipo: "Standup Pouch", peso: "170g", preco: "USD$13.69" },
+      { tipo: "Stick 1,8gr x 180un", peso: "324g", preco: "USD$13.41" },
+    ],
+  },
+  {
+    nome: "Néctar de Minas Gourmet",
     descricao: "Café 100% Arábica Gourmet - 75 puntos SCA. Tostado oscuro intensidad 8 y molienda media-fina, ideal para filtro. Con cuerpo y notas caramelizadas y achocolatadas.",
     imagem: "/nectar-de-minas.png",
     notas: { docura: 2, acidez: 3, corpo: 5, amargor: 5 },
     opcoes: [
-      { tipo: "Molido", peso: "500g", preco: "USD$9.49" },
-      { tipo: "En Granos", peso: "1kg", preco: "USD$17.60" },
+      { tipo: "Molido", peso: "500g", preco: "USD$8.07" },
+      { tipo: "En Granos", peso: "1kg", preco: "USD$15.57" },
+    ],
+  },
+  {
+    nome: "Néctar de Minas Blend Arabica",
+    descricao: "Tostado oscuro, intensidad 8. Blend arábica y conilon, con cuerpo envolvente y notas de madera y almendras.",
+    imagem: "/nectar-de-minas.png",
+    notas: { docura: 2, acidez: 2, corpo: 5, amargor: 4 },
+    opcoes: [
+      { tipo: "Molido", peso: "500g", preco: "USD$5.97" },
+      { tipo: "En Granos", peso: "1kg", preco: "USD$13.57" },
+    ],
+  },
+  {
+    nome: "Néctar de Minas Blend Robusta",
+    descricao: "Tostado oscuro, intensidad 9. Blend con predominancia robusta, cuerpo intenso y notas de cacao amargo y frutos secos.",
+    imagem: "/nectar-de-minas.png",
+    notas: { docura: 1, acidez: 2, corpo: 5, amargor: 5 },
+    opcoes: [
+      { tipo: "Molido", peso: "500g", preco: "USD$5.47" },
+      { tipo: "En Granos", peso: "1kg", preco: "USD$12.37" },
     ],
   },
 ];
@@ -242,25 +272,7 @@ export default function Chile() {
       </section>
 
       {/* Información de Descuentos */}
-      <section className="mb-8 font-sans w-full">
-        <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-4 md:p-6 border border-green-200 shadow-lg">
-          <h2 className="text-lg md:text-xl font-bold text-green-900 mb-3 text-center font-sans break-words w-full">Descuentos por Volumen</h2>
-          <div className="flex flex-col gap-2 md:gap-3 w-full">
-            <div className="flex items-center gap-2 md:gap-3 bg-white rounded-xl px-2.5 py-2 md:px-4 md:py-3 shadow-sm font-sans w-full">
-              <FaCheckCircle className="text-green-500 text-lg md:text-xl" />
-              <span className="text-sm md:text-base break-words">Pedidos de 2 pallets, descuento de 7%</span>
-            </div>
-            <div className="flex items-center gap-2 md:gap-3 bg-white rounded-xl px-2.5 py-2 md:px-4 md:py-3 shadow-sm font-sans w-full">
-              <FaCheckCircle className="text-green-500 text-lg md:text-xl" />
-              <span className="text-sm md:text-base break-words">Pedidos de 3 pallets, descuento de 9%</span>
-            </div>
-            <div className="flex items-center gap-2 md:gap-3 bg-white rounded-xl px-2.5 py-2 md:px-4 md:py-3 shadow-sm font-sans w-full">
-              <FaCheckCircle className="text-amber-500 text-lg md:text-xl" />
-              <span className="text-sm md:text-base break-words font-semibold">Condición promocional de Jornada Horeca 2025: Pedido teste descuento 120kg de café por el precio de 1 pallet</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Secciones únicas */}
       <SecaoProdutos secao="Paquetes" produtos={produtos[0].produtos} />
@@ -271,11 +283,27 @@ export default function Chile() {
       <section className="mb-8 font-sans w-full">
         <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-4 md:p-6 border border-blue-200 shadow-lg">
           <h2 className="text-lg md:text-xl font-bold text-blue-900 mb-3 text-center font-sans break-words w-full">Pedido Mínimo</h2>
-          <div className="bg-white rounded-xl px-4 py-3 shadow-sm font-sans w-full text-center">
-            <p className="text-sm md:text-base text-blue-800 font-semibold break-words w-full">
-              Pedido mínimo 1 pallet de 1,00m X 1,20m X 1,69m<br/>
-              420kg de peso neto de cafés
-            </p>
+          
+          <div className="mb-6">
+            <h3 className="text-base md:text-lg font-semibold text-blue-900 mb-3 text-center font-sans break-words w-full">Para molidos y granos:</h3>
+            <div className="bg-white rounded-xl px-4 py-3 shadow-sm font-sans w-full text-center">
+              <p className="text-sm md:text-base text-blue-800 font-semibold break-words w-full">
+                • <strong>Cantidad:</strong> 2 pallets<br/>
+                • <strong>Dimensiones:</strong> 1,00m x 1,20m x 1,50m<br/>
+                • <strong>Peso neto:</strong> 360 kg por pallet (total de 720kg neto)
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-base md:text-lg font-semibold text-blue-900 mb-3 text-center font-sans break-words w-full">Para solubles:</h3>
+            <div className="bg-white rounded-xl px-4 py-3 shadow-sm font-sans w-full text-center">
+              <p className="text-sm md:text-base text-blue-800 font-semibold break-words w-full">
+                Es necesario desarrollar su propio envase y dejarlo almacenado con nosotros.<br/>
+                • <strong>Inversión inicial:</strong> Aproximadamente USD 3.000,00<br/>
+                • <strong>Pedido mínimo:</strong> 2.000 kg (una vez realizada la inversión inicial)
+              </p>
+            </div>
           </div>
         </div>
       </section>
