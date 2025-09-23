@@ -57,7 +57,7 @@ const pacotes = [
     opcoes: [
       { tipo: "Standup Pouch", peso: "170g", preco: "USD$5.82" },
       { tipo: "Standup Pouch", peso: "170g", preco: "USD$13.69" },
-      { tipo: "Stick 1,8gr x 180un", peso: "324g", preco: "USD$13.41" },
+      { tipo: "Stick 1,8gr x 180un", preco: "USD$13.41" },
     ],
   },
   {
