@@ -252,9 +252,6 @@ export default function Paraguay() {
       <section className="mb-8 font-sans w-full">
         <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-4 md:p-6 border border-blue-200 shadow-lg">
           <h2 className="text-lg md:text-xl font-bold text-blue-900 mb-3 text-center font-sans break-words w-full">Precios EXW - Uberlândia/MG - Brazil</h2>
-          <p className="text-sm md:text-base text-blue-800 text-center leading-relaxed font-sans break-words w-full">
-            Incluye toda la logística, documentos y tasas en Brasil, el cliente deberá únicamente hacer el desaduanaje en Chile. No hay impuesto de importación ya que los países son signatarios de la ALADI.
-          </p>
         </div>
       </section>
 
