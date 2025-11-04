@@ -6,7 +6,7 @@ import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
 const pacotes = [
   {
     nome: "Canastra Clássico",
-    descricao: "Café 100% Arábica - Tipo Especial acima de 84 pontos SCA. Torra escura intensidade 8 e moagem médio-fina, ideal para coador. Encorpado com notas caramelizadas e achocolatadas.",
+    descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA. Torra escura intensidade 8 e moagem médio-fina, ideal para coador. Encorpado com notas caramelizadas e achocolatadas.",
     imagem: "/cafe-classico.png",
     notas: { docura: 3, acidez: 3, corpo: 5, amargor: 4 },
     opcoes: [
@@ -19,7 +19,7 @@ const pacotes = [
   },
   {
     nome: "Canastra Suave",
-    descricao: "Café 100% Arábica - Tipo Especial acima de 84 pontos SCA. Torra média intensidade 7 e moagem médio-fina, ideal para coador. Encorpado com notas achocolatadas e finalização cítrica.",
+    descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA. Torra média intensidade 7 e moagem médio-fina, ideal para coador. Encorpado com notas achocolatadas e finalização cítrica.",
     imagem: "/cafe-suave.png",
     notas: { docura: 3, acidez: 2, corpo: 4, amargor: 3 },
     opcoes: [
@@ -32,7 +32,7 @@ const pacotes = [
   },
   {
     nome: "Canastra Canela",
-    descricao: "Café 100% Arábica - Tipo Especial acima de 84 pontos SCA. Torra escura intensidade 7. Encorpado com notas caramelizadas e adicionado com canela natural.",
+    descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA. Torra escura intensidade 7. Encorpado com notas caramelizadas e adicionado com canela natural.",
     imagem: "/cafe-canela.png",
     notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
     opcoes: [
@@ -70,7 +70,7 @@ const produtos = [
     produtos: [
       {
         nome: "Drip Coffee Canastra Suave",
-        descricao: "Café 100% Arábica - Tipo Especial acima de 84 pontos SCA em sachês individuais. Torra média intensidade 7 e moagem médio-fina. Encorpado com notas achocolatadas e finalização cítrica.",
+        descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA em sachês individuais. Torra média intensidade 7 e moagem médio-fina. Encorpado com notas achocolatadas e finalização cítrica.",
         imagem: "/drip-coffee.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
         opcoes: [
@@ -79,7 +79,7 @@ const produtos = [
       },
       {
         nome: "Cápsula Canastra Clássico",
-        descricao: "Café 100% Arábica - Tipo Especial acima de 84 pontos SCA em cápsulas e compatível com sistema Nespresso. Torra escura intensidade 8 e moagem médio-fina. Encorpado com notas caramelizadas e achocolatadas.",
+        descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA em cápsulas e compatível com sistema Nespresso. Torra escura intensidade 8 e moagem médio-fina. Encorpado com notas caramelizadas e achocolatadas.",
         imagem: "/capsula-classico-canastra.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 4 },
         opcoes: [
@@ -88,7 +88,7 @@ const produtos = [
       },
       {
         nome: "Cápsula Canastra Canela",
-        descricao: "Café 100% Arábica - Tipo Especial acima de 84 pontos SCA em cápsulas e compatível com sistema Nespresso. Torra escura intensidade 7. Encorpado com notas caramelizadas e adicionado com canela natural.",
+        descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA em cápsulas e compatível com sistema Nespresso. Torra escura intensidade 7. Encorpado com notas caramelizadas e adicionado com canela natural.",
         imagem: "/capsula-canela-canastra.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
         opcoes: [
@@ -103,7 +103,7 @@ const produtos = [
     produtos: [
       {
         nome: "Graneis Canastra",
-        descricao: "Granel Canastra: Clássico ou Suave (100% Arábica Especial, Pontuação 84).",
+        descricao: "Granel Canastra: Clássico ou Suave (100% Arábica Especial, Pontuação 80).",
         imagem: "/Granel Canastra.png",
         opcoes: [
           { tipo: "Canastra Clássico ou Suave", peso: "2kg em grãos", preco: "R$155,70" },
