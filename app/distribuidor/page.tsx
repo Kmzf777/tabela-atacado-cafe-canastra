@@ -39,7 +39,6 @@ const pacotes = [
       { tipo: "Moído", peso: "250g", preco: "R$20,56" },
     ],
   },
-  // Agora os especiais
   {
     nome: "Microlote",
     descricao: "Café 100% Arábica Especial com 86 pontos SCA. Médio corpo, notas de cacau, melaço e finalização suavemente cítrica.",

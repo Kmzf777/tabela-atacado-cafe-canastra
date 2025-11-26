@@ -5,6 +5,16 @@ import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
 
 const pacotes = [
   {
+    nome: "Néctar de Minas",
+    descricao: "Café 100% Arábica Gourmet - 75 pontos SCA. Torra escura intensidade 8 e moagem médio-fina, ideal para coador. Encorpado com notas caramelizadas e achocolatadas.",
+    imagem: "/nectar-de-minas.png",
+    notas: { docura: 2, acidez: 3, corpo: 5, amargor: 5 },
+    opcoes: [
+      { tipo: "Moído", peso: "500g", preco: "R$39,70" },
+      { tipo: "Em Grãos", peso: "1kg", preco: "R$82,70" },
+    ],
+  },
+  {
     nome: "Canastra Clássico",
     descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA. Torra escura intensidade 8 e moagem médio-fina, ideal para coador. Encorpado com notas caramelizadas e achocolatadas.",
     imagem: "/cafe-classico.png",
@@ -39,7 +49,6 @@ const pacotes = [
       { tipo: "Moído", peso: "250g", preco: "R$27,70" },
     ],
   },
-  // Agora os especiais
   {
     nome: "Microlote",
     descricao: "Café 100% Arábica Especial com 86 pontos SCA. Médio corpo, notas de cacau, melaço e finalização suavemente cítrica.",
@@ -48,16 +57,6 @@ const pacotes = [
     opcoes: [
       { tipo: "Moído", peso: "250g", preco: "R$31,70" },
       { tipo: "Em Grãos", peso: "250g", preco: "R$31,70" },
-    ],
-  },
-  {
-    nome: "Néctar de Minas",
-    descricao: "Café 100% Arábica Gourmet - 75 pontos SCA. Torra escura intensidade 8 e moagem médio-fina, ideal para coador. Encorpado com notas caramelizadas e achocolatadas.",
-    imagem: "/nectar-de-minas.png",
-    notas: { docura: 2, acidez: 3, corpo: 5, amargor: 5 },
-    opcoes: [
-      { tipo: "Moído", peso: "500g", preco: "R$39,70" },
-      { tipo: "Em Grãos", peso: "1kg", preco: "R$82,70" },
     ],
   },
 ];
@@ -113,6 +112,9 @@ const produtos = [
   },
 ];
 
+// (Removido) Componente promocional exclusivo do Néctar de Minas
+
+// Função para estrelas de avaliação
 function NotaEstrela({ n }: { n: number }) {
   return (
     <div className="flex gap-0.5">
@@ -134,15 +136,81 @@ function corTituloProduto(nome: string) {
 
 // Função para gradiente do card conforme família
 function gradienteCardProduto(nome: string) {
-  // Clássico: marrom queimado
-  if (/cl[áa]ssico|n[ée]ctar de minas/i.test(nome)) return "bg-gradient-to-br from-amber-900/20 via-white to-amber-900/5";
-  // Suave: marrom claro
+  if (/n[ée]ctar de minas/i.test(nome)) return "bg-[linear-gradient(135deg,#2a0f3b_0%,#3b1555_30%,#4b1a59_50%,#8b2f00_75%,#ff7a1a_95%,#ff6600_100%)]";
+  if (/cl[áa]ssico/i.test(nome)) return "bg-gradient-to-br from-amber-900/20 via-white to-amber-900/5";
   if (/suave/i.test(nome)) return "bg-gradient-to-br from-yellow-600/20 via-white to-yellow-600/5";
-  // Canela: vermelho vivo
   if (/canela/i.test(nome)) return "bg-gradient-to-br from-red-500/20 via-white to-red-500/5";
-  // Granel: prata
   if (/granel|graneis/i.test(nome)) return "bg-gradient-to-br from-gray-300/30 via-white to-gray-200/10";
   return "bg-gradient-to-br from-amber-50 via-white to-amber-100";
+}
+
+function CardNectar({ prod, idx }: { prod: any; idx: number }) {
+  const precoBase = prod.opcoes?.[0]?.preco ?? 'R$0,00';
+  const precoPromo = precoComDesconto(precoBase, 20);
+  return (
+    <motion.div
+      key={prod.nome}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.5, delay: idx * 0.08, ease: 'easeOut' }}
+      className="relative overflow-hidden rounded-[28px] p-4 md:p-6 border border-[#d4af37] ring-1 ring-[#d4af37]/50 shadow-2xl bg-[linear-gradient(135deg,#2a0f3b_0%,#3b1555_24%,#4b1a59_42%,#632a1a_70%,#ff7a1a_92%,#ff6600_100%)]"
+    >
+      <div className="absolute left-4 top-4 rounded-full px-3 py-1 text-xs md:text-sm font-bold text-white shadow-sm bg-[linear-gradient(135deg,#3b1555,#f3d37a)]">20% OFF</div>
+      <div className="absolute -top-10 -right-14 rotate-45 w-52 h-12 bg-black rounded-md shadow-2xl">
+        <div className="absolute top-0 left-0 w-full h-1.5 bg-[linear-gradient(90deg,#d4af37,#f3d37a)] rounded-t-md"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1.5 bg-[linear-gradient(90deg,#d4af37,#f3d37a)] rounded-b-md"></div>
+      </div>
+      <div className="absolute -bottom-10 -left-14 -rotate-45 w-56 h-12 bg-black rounded-md shadow-2xl">
+        <div className="absolute top-0 left-0 w-full h-1.5 bg-[linear-gradient(90deg,#d4af37,#f3d37a)] rounded-t-md"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1.5 bg-[linear-gradient(90deg,#d4af37,#f3d37a)] rounded-b-md"></div>
+      </div>
+      <div className="absolute bottom-3 right-3 w-3 h-3 rotate-45 bg-[linear-gradient(135deg,#d4af37,#f3d37a)] rounded-[2px]"></div>
+      <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+        <div className="w-[134px] h-[134px] md:w-32 md:h-32 rounded-2xl flex items-center justify-center overflow-hidden mx-auto sm:mx-0 flex-shrink-0">
+          {prod.imagem ? (
+            <Image src={prod.imagem} alt={prod.nome} width={160} height={160} className="object-cover w-full h-full rounded-2xl" />
+          ) : (
+            <span className="text-xs text-gray-300">Imagem</span>
+          )}
+        </div>
+        <div className="flex-1 min-w-0 w-full">
+          <div className="mb-2">
+            <span className="block font-extrabold text-2xl md:text-3xl text-white tracking-tight">{prod.nome}</span>
+          </div>
+          <div className="inline-flex items-center rounded-xl px-3 py-2 bg-[linear-gradient(135deg,#d4af37,#f3d37a)] shadow text-black font-extrabold uppercase mb-3">BLACK FRIDAY</div>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm mb-3 text-white/90">
+            <span>Doçura <NotaEstrela n={prod.notas.docura} /></span>
+            <span>Acidez <NotaEstrela n={prod.notas.acidez} /></span>
+            <span>Corpo <NotaEstrela n={prod.notas.corpo} /></span>
+            <span className="w-full sm:w-auto">Amargor <NotaEstrela n={prod.notas.amargor} /></span>
+          </div>
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-gray-300 line-through text-lg">{precoBase}</span>
+            <span className="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-[linear-gradient(180deg,#ffffff,#f3d37a)]">{precoPromo}</span>
+          </div>
+          <div className="inline-flex items-center rounded-full border border-[#d4af37] px-3 py-1 text-xs md:text-sm text-white/90">A partir de 10un.</div>
+          <div className="mt-3 flex flex-col gap-2">
+            {prod.opcoes.map((op: any, i: number) => (
+              <div key={i} className="flex items-center justify-between rounded-xl px-3 md:px-4 py-2 border border-[#d4af37]/60 bg-black/20 backdrop-blur-sm">
+                <span className="text-white/90">{`${op.tipo ? op.tipo : ''}${op.tipo && op.peso ? ' ' : ''}${op.peso ? op.peso : ''}`.trim()}</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-gray-300 line-through">{op.preco}</span>
+                  <span className="rounded-full px-2.5 py-1 text-xs md:text-sm font-bold text-white bg-[linear-gradient(135deg,#3b1555,#f3d37a)]">20% OFF</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function precoComDesconto(preco: string, desconto: number) {
+  const n = parseFloat(preco.replace(/[R$\s]/g, '').replace('.', '').replace(',', '.'));
+  const d = (n * (100 - desconto)) / 100;
+  return `R$${d.toFixed(2).replace('.', ',')}`;
 }
 
 function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) {
@@ -160,6 +228,10 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
       <div className="flex flex-col gap-10">
         {produtos.map((prod: any, idx: number) => {
           const isMicrolote = prod.nome.toLowerCase().includes('microlote');
+          const isNectar = /n[ée]ctar de minas/i.test(prod.nome);
+          if (isNectar) {
+            return <CardNectar key={prod.nome} prod={prod} idx={idx} />;
+          }
           return (
             <motion.div
               key={prod.nome}
@@ -167,13 +239,12 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: idx * 0.08, ease: 'easeOut' }}
-              className={`flex flex-col sm:flex-row items-start gap-4 sm:gap-6 rounded-3xl shadow-2xl p-3 md:p-8 border transition-all min-h-[120px] group w-full max-w-full
+              className={`flex flex-col sm:flex-row items-start gap-4 sm:gap-6 rounded-3xl shadow-2xl p-3 md:p-8 border transition-all min-h-[120px] group w-full max-w-full relative
                 ${isMicrolote ? 'bg-gradient-to-br from-[#fffbe6] via-[#fff7cc] to-[#ffe066] border-yellow-400 shadow-[0_0_24px_2px_rgba(255,215,0,0.12)] ring-2 ring-yellow-300/40' : 'border-gray-100'}
                 ${gradienteCardProduto(prod.nome)}
               `}
               style={isMicrolote ? {boxShadow: '0 0 32px 0 rgba(255, 215, 0, 0.18), 0 2px 8px 0 rgba(0,0,0,0.04)'} : {}}
             >
-              {/* Imagem 1:1 */}
               <div className="w-28 h-28 md:w-36 md:h-36 rounded-2xl flex items-center justify-center overflow-hidden mx-auto sm:mx-0 mb-4 sm:mb-0 flex-shrink-0">
                 {prod.imagem ? (
                   <Image src={prod.imagem} alt={prod.nome} width={144} height={144} className="object-cover w-full h-full rounded-2xl" />
@@ -181,13 +252,11 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
                   <span className="text-xs text-gray-400">Imagem<br/>1:1</span>
                 )}
               </div>
-              {/* Info */}
               <div className="flex-1 min-w-0 text-center sm:text-left w-full max-w-full">
                 <div className="flex items-center gap-2 mb-2 w-full max-w-full relative">
                   <span className={`font-bold text-2xl md:text-3xl ${corTituloProduto(prod.nome)} break-words w-full max-w-full`}>{prod.nome}</span>
                 </div>
                 <p className="text-base md:text-lg text-gray-700 mb-3 leading-tight break-words w-full max-w-full">{prod.descricao}</p>
-                {/* Notas */}
                 {prod.notas && (
                   <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm mb-3 w-full max-w-full justify-center sm:justify-start">
                     <span>Doçura <NotaEstrela n={prod.notas.docura} /></span>
@@ -199,10 +268,9 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
                     </span>
                   </div>
                 )}
-                {/* Preços */}
                 <div className="flex flex-col gap-2 mt-2 w-full max-w-full">
                   {prod.opcoes.map((op: any, i: number) => (
-                    <div key={i} className="flex items-center justify-between bg-white rounded-xl px-2 md:px-4 py-2 shadow-sm border border-gray-100 w-full max-w-full">
+                    <div key={i} className="flex items-center justify-between rounded-xl px-2 md:px-4 py-2 shadow-sm border w-full max-w-full bg-white border-gray-100">
                       <span className="text-gray-700 break-words w-full max-w-full text-sm md:text-base text-left">
                         {`${op.tipo ? op.tipo : ''}${op.tipo && op.peso ? ' ' : ''}${op.peso ? op.peso : ''}`.trim()}
                       </span>
@@ -309,4 +377,4 @@ export default function Home() {
       </section>
     </main>
   );
-} 
+}
