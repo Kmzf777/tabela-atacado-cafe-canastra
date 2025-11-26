@@ -59,6 +59,15 @@ const pacotes = [
       { tipo: "Em Grãos", peso: "250g", preco: "R$31,70" },
     ],
   },
+  {
+    nome: "Néctar de Minas – Em Grãos 1kg",
+    descricao: "Café 100% Arábica Gourmet - 75 pontos SCA. Torra escura intensidade 8 e moagem média para coador. Encorpado com notas caramelizadas e achocolatadas.",
+    imagem: "/nectar-de-minas.png",
+    notas: { docura: 2, acidez: 3, corpo: 5, amargor: 5 },
+    opcoes: [
+      { tipo: "Em Grãos", peso: "1kg", preco: "R$82,70" },
+    ],
+  },
 ];
 
 const produtos = [
@@ -136,7 +145,7 @@ function corTituloProduto(nome: string) {
 
 // Função para gradiente do card conforme família
 function gradienteCardProduto(nome: string) {
-  if (/n[ée]ctar de minas/i.test(nome)) return "bg-[linear-gradient(135deg,#2a0f3b_0%,#3b1555_30%,#4b1a59_50%,#8b2f00_75%,#ff7a1a_95%,#ff6600_100%)]";
+  if (/^n[ée]ctar de minas$/i.test(nome)) return "bg-[linear-gradient(135deg,#2a0f3b_0%,#3b1555_30%,#4b1a59_50%,#8b2f00_75%,#ff7a1a_95%,#ff6600_100%)]";
   if (/cl[áa]ssico/i.test(nome)) return "bg-gradient-to-br from-amber-900/20 via-white to-amber-900/5";
   if (/suave/i.test(nome)) return "bg-gradient-to-br from-yellow-600/20 via-white to-yellow-600/5";
   if (/canela/i.test(nome)) return "bg-gradient-to-br from-red-500/20 via-white to-red-500/5";
@@ -167,9 +176,9 @@ function CardNectar({ prod, idx }: { prod: any; idx: number }) {
       </div>
       <div className="absolute bottom-3 right-3 w-3 h-3 rotate-45 bg-[linear-gradient(135deg,#d4af37,#f3d37a)] rounded-[2px]"></div>
       <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
-        <div className="w-[134px] h-[134px] md:w-32 md:h-32 rounded-2xl flex items-center justify-center overflow-hidden mx-auto sm:mx-0 flex-shrink-0">
+        <div className="w-[192px] h-[192px] md:w-32 md:h-32 rounded-2xl flex items-center justify-center overflow-hidden mx-auto sm:mx-0 flex-shrink-0">
           {prod.imagem ? (
-            <Image src={prod.imagem} alt={prod.nome} width={160} height={160} className="object-cover w-full h-full rounded-2xl" />
+            <Image src={prod.imagem} alt={prod.nome} width={256} height={256} className="object-cover w-full h-full rounded-2xl" />
           ) : (
             <span className="text-xs text-gray-300">Imagem</span>
           )}
@@ -191,7 +200,13 @@ function CardNectar({ prod, idx }: { prod: any; idx: number }) {
           </div>
           <div className="inline-flex items-center rounded-full border border-[#d4af37] px-3 py-1 text-xs md:text-sm text-white/90">A partir de 10un.</div>
           <div className="mt-3 flex flex-col gap-2">
-            {prod.opcoes.map((op: any, i: number) => (
+            {prod.opcoes
+              .filter((op: any) => {
+                const tipo = (op.tipo || '').toLowerCase();
+                const isGraos = /gr[ãa]os/.test(tipo);
+                return !(isGraos && op.peso === '1kg');
+              })
+              .map((op: any, i: number) => (
               <div key={i} className="flex items-center justify-between rounded-xl px-3 md:px-4 py-2 border border-[#d4af37]/60 bg-black/20 backdrop-blur-sm">
                 <span className="text-white/90">{`${op.tipo ? op.tipo : ''}${op.tipo && op.peso ? ' ' : ''}${op.peso ? op.peso : ''}`.trim()}</span>
                 <div className="flex items-center gap-3">
@@ -228,8 +243,8 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
       <div className="flex flex-col gap-10">
         {produtos.map((prod: any, idx: number) => {
           const isMicrolote = prod.nome.toLowerCase().includes('microlote');
-          const isNectar = /n[ée]ctar de minas/i.test(prod.nome);
-          if (isNectar) {
+          const isNectarPromo = /^n[ée]ctar de minas$/i.test(prod.nome);
+          if (isNectarPromo) {
             return <CardNectar key={prod.nome} prod={prod} idx={idx} />;
           }
           return (
