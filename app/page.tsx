@@ -5,16 +5,6 @@ import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
 
 const pacotes = [
   {
-    nome: "Néctar de Minas",
-    descricao: "Café 100% Arábica Gourmet - 75 pontos SCA. Torra escura intensidade 8 e moagem médio-fina, ideal para coador. Encorpado com notas caramelizadas e achocolatadas.",
-    imagem: "/nectar-de-minas.png",
-    notas: { docura: 2, acidez: 3, corpo: 5, amargor: 5 },
-    opcoes: [
-      { tipo: "Moído", peso: "500g", preco: "R$39,70" },
-      { tipo: "Em Grãos", peso: "1kg", preco: "R$82,70" },
-    ],
-  },
-  {
     nome: "Canastra Clássico",
     descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA. Torra escura intensidade 8 e moagem médio-fina, ideal para coador. Encorpado com notas caramelizadas e achocolatadas.",
     imagem: "/cafe-classico.png",
@@ -65,6 +55,7 @@ const pacotes = [
     imagem: "/nectar-de-minas.png",
     notas: { docura: 2, acidez: 3, corpo: 5, amargor: 5 },
     opcoes: [
+      { tipo: "Moído", peso: "500g", preco: "R$39,70" },
       { tipo: "Em Grãos", peso: "1kg", preco: "R$82,70" },
     ],
   },
