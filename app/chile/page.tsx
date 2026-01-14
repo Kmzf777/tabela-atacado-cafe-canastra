@@ -316,20 +316,6 @@ export default function Chile() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="mb-8 md:mb-10 font-sans w-full">
-        <div className="rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 p-4 md:p-6 flex flex-col items-center shadow-lg font-sans w-full">
-          <p className="text-white text-base md:text-lg font-bold text-center mb-3 md:mb-4 font-sans break-words w-full">Café Canastra –<br />De la finca a su taza.<br />¡Experimente el sabor de la Sierra!</p>
-          <a
-            href="https://wa.me/+553493195252"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-white text-amber-600 font-bold px-4 py-2 md:px-5 md:py-2 rounded-lg shadow hover:bg-amber-50 transition-all font-sans text-sm md:text-base w-full justify-center"
-          >
-            Hacer Pedido <FaArrowRight className="text-lg" />
-          </a>
-        </div>
-      </section>
     </main>
   );
 }
