@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
+import PromotionCard from "./components/PromotionCard";
 
 const pacotes = [
   {
@@ -198,14 +199,14 @@ function CardNectar({ prod, idx }: { prod: any; idx: number }) {
                 return !(isGraos && op.peso === '1kg');
               })
               .map((op: any, i: number) => (
-              <div key={i} className="flex items-center justify-between rounded-xl px-3 md:px-4 py-2 border border-[#d4af37]/60 bg-black/20 backdrop-blur-sm">
-                <span className="text-white/90">{`${op.tipo ? op.tipo : ''}${op.tipo && op.peso ? ' ' : ''}${op.peso ? op.peso : ''}`.trim()}</span>
-                <div className="flex items-center gap-3">
-                  <span className="text-gray-300 line-through">{op.preco}</span>
-                  <span className="rounded-full px-2.5 py-1 text-xs md:text-sm font-bold text-white bg-[linear-gradient(135deg,#3b1555,#f3d37a)]">20% OFF</span>
+                <div key={i} className="flex items-center justify-between rounded-xl px-3 md:px-4 py-2 border border-[#d4af37]/60 bg-black/20 backdrop-blur-sm">
+                  <span className="text-white/90">{`${op.tipo ? op.tipo : ''}${op.tipo && op.peso ? ' ' : ''}${op.peso ? op.peso : ''}`.trim()}</span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-gray-300 line-through">{op.preco}</span>
+                    <span className="rounded-full px-2.5 py-1 text-xs md:text-sm font-bold text-white bg-[linear-gradient(135deg,#3b1555,#f3d37a)]">20% OFF</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
@@ -249,13 +250,13 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
                 ${isMicrolote ? 'bg-gradient-to-br from-[#fffbe6] via-[#fff7cc] to-[#ffe066] border-yellow-400 shadow-[0_0_24px_2px_rgba(255,215,0,0.12)] ring-2 ring-yellow-300/40' : 'border-gray-100'}
                 ${gradienteCardProduto(prod.nome)}
               `}
-              style={isMicrolote ? {boxShadow: '0 0 32px 0 rgba(255, 215, 0, 0.18), 0 2px 8px 0 rgba(0,0,0,0.04)'} : {}}
+              style={isMicrolote ? { boxShadow: '0 0 32px 0 rgba(255, 215, 0, 0.18), 0 2px 8px 0 rgba(0,0,0,0.04)' } : {}}
             >
               <div className="w-28 h-28 md:w-36 md:h-36 rounded-2xl flex items-center justify-center overflow-hidden mx-auto sm:mx-0 mb-4 sm:mb-0 flex-shrink-0">
                 {prod.imagem ? (
                   <Image src={prod.imagem} alt={prod.nome} width={144} height={144} className="object-cover w-full h-full rounded-2xl" />
                 ) : (
-                  <span className="text-xs text-gray-400">Imagem<br/>1:1</span>
+                  <span className="text-xs text-gray-400">Imagem<br />1:1</span>
                 )}
               </div>
               <div className="flex-1 min-w-0 text-center sm:text-left w-full max-w-full">
@@ -280,7 +281,7 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
                       <span className="text-gray-700 break-words w-full max-w-full text-sm md:text-base text-left">
                         {`${op.tipo ? op.tipo : ''}${op.tipo && op.peso ? ' ' : ''}${op.peso ? op.peso : ''}`.trim()}
                       </span>
-                      <span className="text-amber-600 font-bold text-base md:text-lg text-right" style={{letterSpacing: 1}}>{op.preco}</span>
+                      <span className="text-amber-600 font-bold text-base md:text-lg text-right" style={{ letterSpacing: 1 }}>{op.preco}</span>
                     </div>
                   ))}
                 </div>
@@ -304,6 +305,10 @@ export default function Home() {
         <h1 className="text-xl md:text-3xl font-bold text-gray-900 text-center mb-2 leading-tight font-sans break-words w-full">Direto da Serra da Canastra. <span className="block text-amber-600 font-bold">Frescor na xícara, sabor que conquista.</span></h1>
         <p className="text-center text-sm md:text-lg text-gray-600 mb-2 font-sans break-words w-full">Café especial, selecionado e torrado sob demanda para você.</p>
       </section>
+
+      {/* Queima de Estoque */}
+      <PromotionCard />
+
       {/* Seções únicas */}
       <SecaoProdutos secao="Pacotes" produtos={produtos[0].produtos} />
       <SecaoProdutos secao="Displays" produtos={produtos[1].produtos} />
