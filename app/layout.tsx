@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Café Canastra - Tabela Atacado 2025",
   description: "Tabela de preços e produtos do Café Canastra para atacado.",
+  icons: {
+    icon: "/logo-canastra-branca.png",
+  },
 };
 
 export default function RootLayout({
