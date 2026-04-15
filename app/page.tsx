@@ -51,24 +51,31 @@ const pacotes = [
     ],
   },
   {
-    nome: "Néctar de Minas – Em Grãos 1kg",
+    nome: "Néctar de Minas Gourmet",
     descricao: "Café 100% Arábica Gourmet - 75 pontos SCA. Torra escura intensidade 8 e moagem média para coador. Encorpado com notas caramelizadas e achocolatadas.",
     imagem: "/nectar-de-minas.png",
     notas: { docura: 2, acidez: 3, corpo: 5, amargor: 5 },
     opcoes: [
       { tipo: "Moído", peso: "500g", preco: "R$39,70" },
       { tipo: "Em Grãos", peso: "1kg", preco: "R$88,70" },
-      { tipo: "Kit 10 unid. (R$35,70 cada)", peso: "500g", preco: "R$357,00" },
+      { tipo: "Kit 10 unidades", peso: "500g", preco: "R$357,00", precoUnitario: "R$35,70/unid." },
     ],
   },
   {
-    nome: "Blend Arábica com Robusta",
+    nome: "Néctar de Minas Blend Arábica com Robusta",
     descricao: "Blend especial de café Arábica com Robusta. Encorpado, com notas intensas, amargor equilibrado e crema marcante. Ideal para espresso e máquinas automáticas.",
     imagem: "/nectar-de-minas.png",
     notas: { docura: 2, acidez: 2, corpo: 5, amargor: 5 },
     opcoes: [
       { tipo: "Moído", peso: "1kg", preco: "R$79,70" },
+      { tipo: "Em Grãos", peso: "1kg", preco: "R$79,70" },
     ],
+  },
+  {
+    nome: "Moedor Café Canastra",
+    descricao: "Moedor elétrico profissional. Moagem na hora para garantir o máximo de frescor e aroma no seu café.",
+    imagem: "/moedor.png",
+    opcoes: [],
   },
 ];
 
@@ -147,7 +154,7 @@ function corTituloProduto(nome: string) {
 
 // Função para gradiente do card conforme família
 function gradienteCardProduto(nome: string) {
-  if (/^n[ée]ctar de minas$/i.test(nome)) return "bg-[linear-gradient(135deg,#2a0f3b_0%,#3b1555_30%,#4b1a59_50%,#8b2f00_75%,#ff7a1a_95%,#ff6600_100%)]";
+  if (/^n[ée]ctar de minas/i.test(nome)) return "bg-gradient-to-br from-purple-50 via-white to-orange-50";
   if (/cl[áa]ssico/i.test(nome)) return "bg-gradient-to-br from-amber-900/20 via-white to-amber-900/5";
   if (/suave/i.test(nome)) return "bg-gradient-to-br from-yellow-600/20 via-white to-yellow-600/5";
   if (/canela/i.test(nome)) return "bg-gradient-to-br from-red-500/20 via-white to-red-500/5";
@@ -224,6 +231,56 @@ function CardNectar({ prod, idx }: { prod: any; idx: number }) {
   );
 }
 
+function CardMoedor({ prod, idx }: { prod: any; idx: number }) {
+  return (
+    <motion.div
+      key={prod.nome}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.5, delay: idx * 0.08, ease: 'easeOut' }}
+      className="relative overflow-hidden rounded-[28px] p-4 md:p-6 border border-gray-600 shadow-2xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700"
+    >
+      <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+        <div className="w-40 h-40 rounded-2xl flex items-center justify-center overflow-hidden mx-auto sm:mx-0 flex-shrink-0 bg-gray-800">
+          {prod.imagem ? (
+            <Image src={prod.imagem} alt={prod.nome} width={160} height={160} className="object-contain w-full h-full p-2" />
+          ) : (
+            <span className="text-xs text-gray-300">Imagem</span>
+          )}
+        </div>
+        <div className="flex-1 min-w-0 w-full">
+          <span className="block font-extrabold text-2xl md:text-3xl text-white tracking-tight mb-1">{prod.nome}</span>
+          <p className="text-gray-300 text-sm mb-4 leading-snug">{prod.descricao}</p>
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center justify-between rounded-xl px-4 py-3 bg-white/10 border border-white/20">
+              <span className="text-white/90 text-sm font-medium">Moedor sozinho</span>
+              <div className="flex items-baseline gap-1">
+                <span className="text-white font-extrabold text-lg">R$949</span>
+                <span className="text-gray-300 text-xs">+ frete</span>
+              </div>
+            </div>
+            <div className="flex items-center justify-between rounded-xl px-4 py-3 bg-amber-500/20 border border-amber-400/40">
+              <div>
+                <span className="text-white/90 text-sm font-medium block">Com 10 pacotes de granel</span>
+                <span className="text-amber-300 text-xs">Moedor com desconto especial</span>
+              </div>
+              <span className="text-amber-300 font-extrabold text-xl">R$599</span>
+            </div>
+            <div className="flex items-center justify-between rounded-xl px-4 py-3 bg-green-500/20 border border-green-400/40">
+              <div>
+                <span className="text-white/90 text-sm font-medium block">Com 20 pacotes de granel</span>
+                <span className="text-green-300 text-xs">Você leva o moedor incluso</span>
+              </div>
+              <span className="text-green-300 font-extrabold text-xl tracking-wide">GRÁTIS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 function precoComDesconto(preco: string, desconto: number) {
   const n = parseFloat(preco.replace(/[R$\s]/g, '').replace('.', '').replace(',', '.'));
   const d = (n * (100 - desconto)) / 100;
@@ -246,8 +303,12 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
         {produtos.map((prod: any, idx: number) => {
           const isMicrolote = prod.nome.toLowerCase().includes('microlote');
           const isNectarPromo = /^n[ée]ctar de minas$/i.test(prod.nome);
+          const isMoedor = prod.nome.toLowerCase().includes('moedor');
           if (isNectarPromo) {
             return <CardNectar key={prod.nome} prod={prod} idx={idx} />;
+          }
+          if (isMoedor) {
+            return <CardMoedor key={prod.nome} prod={prod} idx={idx} />;
           }
           return (
             <motion.div
@@ -288,10 +349,13 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
                 <div className="flex flex-col gap-2 mt-2 w-full max-w-full">
                   {prod.opcoes.map((op: any, i: number) => (
                     <div key={i} className="flex items-center justify-between rounded-xl px-2 md:px-4 py-2 shadow-sm border w-full max-w-full bg-white border-gray-100">
-                      <span className="text-gray-700 break-words w-full max-w-full text-sm md:text-base text-left">
+                      <span className="text-gray-700 break-words text-sm md:text-base text-left">
                         {`${op.tipo ? op.tipo : ''}${op.tipo && op.peso ? ' ' : ''}${op.peso ? op.peso : ''}`.trim()}
                       </span>
-                      <span className="text-amber-600 font-bold text-base md:text-lg text-right" style={{ letterSpacing: 1 }}>{op.preco}</span>
+                      <div className="flex flex-col items-end shrink-0 ml-2">
+                        <span className="text-amber-600 font-bold text-base md:text-lg text-right" style={{ letterSpacing: 1 }}>{op.preco}</span>
+                        {op.precoUnitario && <span className="text-gray-400 text-xs text-right">{op.precoUnitario}</span>}
+                      </div>
                     </div>
                   ))}
                 </div>
