@@ -67,7 +67,6 @@ const pacotes = [
     imagem: "/nectar-de-minas.png",
     notas: { docura: 2, acidez: 2, corpo: 5, amargor: 5 },
     opcoes: [
-      { tipo: "Moído", peso: "1kg", preco: "R$79,70" },
       { tipo: "Em Grãos", peso: "1kg", preco: "R$79,70" },
     ],
   },
@@ -99,6 +98,7 @@ const produtos = [
         descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA em cápsulas e compatível com sistema Nespresso. Torra escura intensidade 8 e moagem médio-fina. Encorpado com notas caramelizadas e achocolatadas.",
         imagem: "/capsula-classico-canastra.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 4 },
+        queima: true,
         opcoes: [
           { tipo: "Display (10 unid. de cápsulas)", preco: "R$22,90" },
         ],
@@ -108,6 +108,7 @@ const produtos = [
         descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA em cápsulas e compatível com sistema Nespresso. Torra escura intensidade 7. Encorpado com notas caramelizadas e adicionado com canela natural.",
         imagem: "/capsula-canela-canastra.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
+        queima: true,
         opcoes: [
           { tipo: "Display (10 unid. de cápsulas)", preco: "R$22,90" },
         ],
@@ -119,11 +120,35 @@ const produtos = [
     secao: "Graneis",
     produtos: [
       {
-        nome: "Graneis Canastra",
-        descricao: "Granel Canastra: Clássico ou Suave (100% Arábica Especial, Pontuação 80).",
+        nome: "Granel Canastra Suave",
+        descricao: "Café 100% Arábica Especial, Pontuação 80. Torra média, encorpado com notas achocolatadas e finalização cítrica.",
         imagem: "/Granel Canastra.png",
         opcoes: [
-          { tipo: "Canastra Clássico ou Suave", peso: "2kg em grãos", preco: "R$169,70" },
+          { tipo: "Canastra Suave", peso: "2kg em grãos", preco: "R$169,70" },
+        ],
+      },
+      {
+        nome: "Granel Canastra Clássico",
+        descricao: "Café 100% Arábica Especial, Pontuação 80. Torra escura, encorpado com notas caramelizadas e achocolatadas.",
+        imagem: "/Granel Canastra.png",
+        opcoes: [
+          { tipo: "Canastra Clássico", peso: "2kg em grãos", preco: "R$169,70" },
+        ],
+      },
+      {
+        nome: "Granel Néctar de Minas Espresso",
+        descricao: "Blend especial para espresso. Encorpado com crema marcante e amargor equilibrado.",
+        imagem: "/nectar-de-minas.png",
+        opcoes: [
+          { tipo: "Néctar de Minas Espresso", peso: "2kg em grãos", preco: "R$166,70" },
+        ],
+      },
+      {
+        nome: "Granel Néctar de Minas Intenso",
+        descricao: "Blend intenso com notas marcantes. Ideal para quem busca um café forte e encorpado.",
+        imagem: "/nectar-de-minas.png",
+        opcoes: [
+          { tipo: "Néctar de Minas Intenso", peso: "2kg em grãos", preco: "R$166,70" },
         ],
       },
     ],
@@ -257,7 +282,6 @@ function CardMoedor({ prod, idx }: { prod: any; idx: number }) {
               <span className="text-white/90 text-sm font-medium">Moedor sozinho</span>
               <div className="flex items-baseline gap-1">
                 <span className="text-white font-extrabold text-lg">R$949</span>
-                <span className="text-gray-300 text-xs">+ frete</span>
               </div>
             </div>
             <div className="flex items-center justify-between rounded-xl px-4 py-3 bg-amber-500/20 border border-amber-400/40">
@@ -270,9 +294,9 @@ function CardMoedor({ prod, idx }: { prod: any; idx: number }) {
             <div className="flex items-center justify-between rounded-xl px-4 py-3 bg-green-500/20 border border-green-400/40">
               <div>
                 <span className="text-white/90 text-sm font-medium block">Com 20 pacotes de granel</span>
-                <span className="text-green-300 text-xs">Você leva o moedor incluso</span>
+                <span className="text-green-300 text-xs">Moedor com super desconto</span>
               </div>
-              <span className="text-green-300 font-extrabold text-xl tracking-wide">GRÁTIS</span>
+              <span className="text-green-300 font-extrabold text-xl tracking-wide">R$99</span>
             </div>
           </div>
         </div>
@@ -304,6 +328,7 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
           const isMicrolote = prod.nome.toLowerCase().includes('microlote');
           const isNectarPromo = /^n[ée]ctar de minas$/i.test(prod.nome);
           const isMoedor = prod.nome.toLowerCase().includes('moedor');
+          const isQueima = prod.queima === true;
           if (isNectarPromo) {
             return <CardNectar key={prod.nome} prod={prod} idx={idx} />;
           }
@@ -319,10 +344,15 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
               transition={{ duration: 0.5, delay: idx * 0.08, ease: 'easeOut' }}
               className={`flex flex-col sm:flex-row items-start gap-4 sm:gap-6 rounded-3xl shadow-2xl p-3 md:p-8 border transition-all min-h-[120px] group w-full max-w-full relative
                 ${isMicrolote ? 'bg-gradient-to-br from-[#fffbe6] via-[#fff7cc] to-[#ffe066] border-yellow-400 shadow-[0_0_24px_2px_rgba(255,215,0,0.12)] ring-2 ring-yellow-300/40' : 'border-gray-100'}
-                ${gradienteCardProduto(prod.nome)}
+                ${isQueima ? 'bg-gradient-to-br from-red-50 via-white to-orange-50 border-red-300 ring-1 ring-red-200' : gradienteCardProduto(prod.nome)}
               `}
               style={isMicrolote ? { boxShadow: '0 0 32px 0 rgba(255, 215, 0, 0.18), 0 2px 8px 0 rgba(0,0,0,0.04)' } : {}}
             >
+              {isQueima && (
+                <div className="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md animate-pulse z-10">
+                  🔥 Queima de Estoque
+                </div>
+              )}
               <div className="w-28 h-28 md:w-36 md:h-36 rounded-2xl flex items-center justify-center overflow-hidden mx-auto sm:mx-0 mb-4 sm:mb-0 flex-shrink-0">
                 {prod.imagem ? (
                   <Image src={prod.imagem} alt={prod.nome} width={144} height={144} className="object-cover w-full h-full rounded-2xl" />
@@ -335,6 +365,9 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
                   <span className={`font-bold text-2xl md:text-3xl ${corTituloProduto(prod.nome)} break-words w-full max-w-full`}>{prod.nome}</span>
                 </div>
                 <p className="text-base md:text-lg text-gray-700 mb-3 leading-tight break-words w-full max-w-full">{prod.descricao}</p>
+                {isQueima && (
+                  <p className="text-sm text-red-600 font-semibold mb-2">Mesmo desconto progressivo do Drip Coffee — válido para todos os sabores!</p>
+                )}
                 {prod.notas && (
                   <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm mb-3 w-full max-w-full justify-center sm:justify-start">
                     <span>Doçura <NotaEstrela n={prod.notas.docura} /></span>
