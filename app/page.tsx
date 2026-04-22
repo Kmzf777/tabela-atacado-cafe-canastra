@@ -3,6 +3,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
 import PromotionCard from "./components/PromotionCard";
+import CapsulePromotionCard from "./components/CapsulePromotionCard";
 
 const pacotes = [
   {
@@ -415,6 +416,7 @@ export default function Home() {
 
       {/* Queima de Estoque */}
       <PromotionCard />
+      <CapsulePromotionCard />
 
       {/* Seções únicas */}
       <SecaoProdutos secao="Pacotes" produtos={produtos[0].produtos} />
