@@ -85,6 +85,9 @@ const produtos = [
   {
     secao: "Displays",
     produtos: [
+      /* ===== DRIP COFFEE E CÁPSULAS OCULTOS TEMPORARIAMENTE =====
+         Para reexibir estes produtos, basta remover este bloco de comentário
+         (a abertura logo acima e o fechamento logo abaixo).
       {
         nome: "Drip Coffee Canastra Suave",
         descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA em sachês individuais. Torra média intensidade 7 e moagem médio-fina. Encorpado com notas achocolatadas e finalização cítrica.",
@@ -114,6 +117,7 @@ const produtos = [
           { tipo: "Display (10 unid. de cápsulas)", preco: "R$22,90" },
         ],
       },
+      ===== FIM DO BLOCO OCULTO ===== */
     ],
   },
   // GRANEIS
@@ -415,12 +419,14 @@ export default function Home() {
       </section>
 
       {/* Queima de Estoque */}
-      <PromotionCard />
-      <CapsulePromotionCard />
+      {/* OCULTOS TEMPORARIAMENTE (Drip Coffee e Cápsulas). Para reexibir, descomente as duas linhas abaixo. */}
+      {/* <PromotionCard /> */}
+      {/* <CapsulePromotionCard /> */}
 
       {/* Seções únicas */}
       <SecaoProdutos secao="Pacotes" produtos={produtos[0].produtos} />
-      <SecaoProdutos secao="Displays" produtos={produtos[1].produtos} />
+      {/* Seção Displays oculta temporariamente (só continha Drip Coffee e Cápsulas). Para reexibir, descomente a linha abaixo. */}
+      {/* <SecaoProdutos secao="Displays" produtos={produtos[1].produtos} /> */}
       <SecaoProdutos secao="Graneis" produtos={produtos[2].produtos} />
       {/* Benefícios */}
       <section className="bg-gray-50 rounded-2xl p-2.5 md:p-4 mb-6 md:mb-8 font-sans w-full">
