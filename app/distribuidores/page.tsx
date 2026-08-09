@@ -52,8 +52,7 @@ const pacotes = [
     imagem: "/nectar-de-minas.png",
     notas: { docura: 2, acidez: 3, corpo: 5, amargor: 5 },
     opcoes: [
-      { tipo: "Moído", peso: "500g", preco: "R$39,70" },
-      { tipo: "Em Grãos", peso: "1kg", preco: "R$75,70" },
+      { tipo: "Moído", peso: "500g", preco: "R$29,70" },
     ],
   },
   {
@@ -62,14 +61,8 @@ const pacotes = [
     imagem: "/nectar-de-minas.png",
     notas: { docura: 2, acidez: 2, corpo: 5, amargor: 5 },
     opcoes: [
-      { tipo: "Em Grãos", peso: "1kg", preco: "R$75,70" },
+      { tipo: "Em Grãos", peso: "1kg", preco: "R$69,70" },
     ],
-  },
-  {
-    nome: "Moedor Café Canastra",
-    descricao: "Moedor elétrico profissional. Moagem na hora para garantir o máximo de frescor e aroma no seu café.",
-    imagem: "/moedor.png",
-    opcoes: [],
   },
 ];
 
@@ -120,41 +113,6 @@ function gradienteCardProduto(nome: string) {
   return "bg-gradient-to-br from-amber-50 via-white to-amber-100";
 }
 
-function CardMoedor({ prod, idx }: { prod: any; idx: number }) {
-  return (
-    <motion.div
-      key={prod.nome}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.5, delay: idx * 0.08, ease: 'easeOut' }}
-      className="relative overflow-hidden rounded-[28px] p-4 md:p-6 border border-gray-600 shadow-2xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700"
-    >
-      <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
-        <div className="w-40 h-40 rounded-2xl flex items-center justify-center overflow-hidden mx-auto sm:mx-0 flex-shrink-0 bg-gray-800">
-          {prod.imagem ? (
-            <Image src={prod.imagem} alt={prod.nome} width={160} height={160} className="object-contain w-full h-full p-2" />
-          ) : (
-            <span className="text-xs text-gray-300">Imagem</span>
-          )}
-        </div>
-        <div className="flex-1 min-w-0 w-full">
-          <span className="block font-extrabold text-2xl md:text-3xl text-white tracking-tight mb-1">{prod.nome}</span>
-          <p className="text-gray-300 text-sm mb-4 leading-snug">{prod.descricao}</p>
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center justify-between rounded-xl px-4 py-3 bg-white/10 border border-white/20">
-              <span className="text-white/90 text-sm font-medium">Moedor</span>
-              <div className="flex items-baseline gap-1">
-                <span className="text-white font-extrabold text-lg">R$949</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
 function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) {
   return (
     <section className="mb-16">
@@ -170,10 +128,6 @@ function SecaoProdutos({ secao, produtos }: { secao: string; produtos: any[] }) 
       <div className="flex flex-col gap-10">
         {produtos.map((prod: any, idx: number) => {
           const isMicrolote = prod.nome.toLowerCase().includes('microlote');
-          const isMoedor = prod.nome.toLowerCase().includes('moedor');
-          if (isMoedor) {
-            return <CardMoedor key={prod.nome} prod={prod} idx={idx} />;
-          }
           return (
             <motion.div
               key={prod.nome}
@@ -244,6 +198,15 @@ export default function Distribuidores() {
         <p className="text-center text-sm md:text-lg text-gray-600 mb-2 font-sans break-words w-full">Direto da Serra da Canastra. Café especial, selecionado e torrado sob demanda para você.</p>
       </section>
 
+      {/* Condições de compra */}
+      <section className="mb-8 w-full">
+        <div className="flex flex-col gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-center">
+          <span className="text-sm md:text-base font-semibold text-amber-800 break-words">Frete não incluso.</span>
+          <span className="text-sm md:text-base font-semibold text-amber-800 break-words">Pagamento à vista.</span>
+          <span className="text-sm md:text-base font-semibold text-amber-800 break-words">Pedido mínimo R$5.000.</span>
+        </div>
+      </section>
+
       {/* Seções únicas */}
       <SecaoProdutos secao="Pacotes" produtos={produtos[0].produtos} />
       <SecaoProdutos secao="Displays" produtos={produtos[1].produtos} />
@@ -268,13 +231,6 @@ export default function Distribuidores() {
             <FaCheckCircle className="text-green-500 text-lg md:text-xl" />
             <span className="text-sm md:text-base break-words">Qualidade e sabor que surpreendem</span>
           </div>
-        </div>
-      </section>
-
-      {/* Aviso de frete */}
-      <section className="mb-8 w-full">
-        <div className="flex items-center justify-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-center">
-          <span className="text-sm md:text-base font-semibold text-amber-800 break-words">Frete não incluso.</span>
         </div>
       </section>
     </main>
