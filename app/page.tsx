@@ -85,9 +85,6 @@ const produtos = [
   {
     secao: "Displays",
     produtos: [
-      /* ===== DRIP COFFEE E CÁPSULAS OCULTOS TEMPORARIAMENTE =====
-         Para reexibir estes produtos, basta remover este bloco de comentário
-         (a abertura logo acima e o fechamento logo abaixo).
       {
         nome: "Drip Coffee Canastra Suave",
         descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA em sachês individuais. Torra média intensidade 7 e moagem médio-fina. Encorpado com notas achocolatadas e finalização cítrica.",
@@ -102,9 +99,8 @@ const produtos = [
         descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA em cápsulas e compatível com sistema Nespresso. Torra escura intensidade 8 e moagem médio-fina. Encorpado com notas caramelizadas e achocolatadas.",
         imagem: "/capsula-classico-canastra.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 4 },
-        queima: true,
         opcoes: [
-          { tipo: "Display (10 unid. de cápsulas)", preco: "R$22,90" },
+          { tipo: "Display (10 unid. de cápsulas)", preco: "R$18,70" },
         ],
       },
       {
@@ -112,12 +108,10 @@ const produtos = [
         descricao: "Café 100% Arábica - Tipo Especial acima de 80 pontos SCA em cápsulas e compatível com sistema Nespresso. Torra escura intensidade 7. Encorpado com notas caramelizadas e adicionado com canela natural.",
         imagem: "/capsula-canela-canastra.png",
         notas: { docura: 3, acidez: 3, corpo: 4, amargor: 3 },
-        queima: true,
         opcoes: [
-          { tipo: "Display (10 unid. de cápsulas)", preco: "R$22,90" },
+          { tipo: "Display (10 unid. de cápsulas)", preco: "R$18,70" },
         ],
       },
-      ===== FIM DO BLOCO OCULTO ===== */
     ],
   },
   // GRANEIS
@@ -425,8 +419,7 @@ export default function Home() {
 
       {/* Seções únicas */}
       <SecaoProdutos secao="Pacotes" produtos={produtos[0].produtos} />
-      {/* Seção Displays oculta temporariamente (só continha Drip Coffee e Cápsulas). Para reexibir, descomente a linha abaixo. */}
-      {/* <SecaoProdutos secao="Displays" produtos={produtos[1].produtos} /> */}
+      <SecaoProdutos secao="Displays" produtos={produtos[1].produtos} />
       <SecaoProdutos secao="Graneis" produtos={produtos[2].produtos} />
       {/* Benefícios */}
       <section className="bg-gray-50 rounded-2xl p-2.5 md:p-4 mb-6 md:mb-8 font-sans w-full">
