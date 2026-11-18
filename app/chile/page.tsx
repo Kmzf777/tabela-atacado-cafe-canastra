@@ -41,9 +41,9 @@ const pacotes = [
   },
   {
     nome: "Microlote",
-    descricao: "Café 100% Arábica Especial con 86 puntos SCA. Cuerpo medio, notas de cacao, melaza y finalización suavemente cítrica.",
+    descricao: "Café 100% Arábica Especial fermentado, con 86 puntos SCA. Cuerpo licoroso, notas de caña de azúcar y finalización cítrica intensa.",
     imagem: "/microlote-png.png",
-    notas: { docura: 3, acidez: 4, corpo: 4, amargor: 3 },
+    notas: { docura: 3, acidez: 5, corpo: 4, amargor: 3 },
     opcoes: [
       { tipo: "Molido", peso: "250g", preco: "USD$4.57" },
       { tipo: "En Granos", peso: "250g", preco: "USD$7.60" },
